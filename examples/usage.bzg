@@ -1,0 +1,33 @@
+include("lib/rng.bzg");
+
+// 1. Instantiate the random generator object (with optional seed)
+var rng1 = rng();
+
+// 2. Generate random floating-point numbers
+var f1 = rng1.rand();          // Range: [0.0, 1.0)
+var f2 = rng1.rand(10.0);      // Range: [0.0, 10.0)
+var f3 = rng1.rand(5.0, 15.0); // Range: [5.0, 15.0)
+
+print(f1);
+print(f2);
+print(f3);
+
+// 3. Generate random integers
+var dice = rng1.randint(1, 6000); // Range: [1, 6] inclusive
+print(dice);
+
+// 4. Select a random item from an array
+var colors = ["Red", "Green", "Blue", "Yellow"];
+var chosen_color = rng1.choice(colors);
+print(chosen_color);
+
+// 5. Generate a random boolean value (1.0 or 0.0)
+var coin_flip = rng1.boolean();
+print(coin_flip);
+
+// 6. Create a separate instance with a different seed
+var rng2 = rng(999);
+print(rng2.rand());
+
+// 7. Re-seed an existing instance
+rng2.seed(42);
